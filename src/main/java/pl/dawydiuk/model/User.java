@@ -3,6 +3,7 @@ package pl.dawydiuk.model;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import pl.dawydiuk.enums.EPlec;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -38,5 +39,11 @@ public class User {
     @Getter
     @Setter
     private String password;
+
+    @Column(name = "plec")
+    @Getter
+    @Setter
+    private EPlec plec;
+
 
 }

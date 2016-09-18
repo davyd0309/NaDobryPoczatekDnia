@@ -29,7 +29,7 @@ public class RunAtStart {
     }
 
 
-   // @PostConstruct
+    //@PostConstruct
     public void runAtStart() {
 
         User user = new User();
@@ -37,7 +37,19 @@ public class RunAtStart {
         user.setEmial("davyd@wp.pl");
         user.setPassword("davyd");
 
+        User user1 = new User();
+        user1.setLogin("robin");
+        user1.setEmial("robin@wp.pl");
+        user1.setPassword("robin");
+
+        User user2 = new User();
+        user2.setLogin("maki");
+        user2.setEmial("maki@wp.pl");
+        user2.setPassword("maki");
+
         userRespository.save(user);
+        userRespository.save(user1);
+        userRespository.save(user2);
 
     }
 
