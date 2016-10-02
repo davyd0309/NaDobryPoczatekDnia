@@ -1,14 +1,19 @@
 package pl.dawydiuk.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.dawydiuk.dao.UserRespository;
 import pl.dawydiuk.model.User;
+
 
 import java.util.List;
 
 /**
  * Created by Konrad on 13.09.2016.
  */
+@Service
+@Transactional
 public class UserServiceImpl implements UserService{
 
 
@@ -37,6 +42,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findUserById(Integer id) {
-        return null;
+        return userRespository.findOne(id);
     }
 }

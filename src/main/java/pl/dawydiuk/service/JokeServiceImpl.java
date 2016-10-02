@@ -2,8 +2,10 @@ package pl.dawydiuk.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.dawydiuk.dao.JokeRespository;
 import pl.dawydiuk.model.Joke;
+
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * Created by Konrad on 18.09.2016.
  */
 @Service
+@Transactional
 public class JokeServiceImpl implements JokeService {
 
 
