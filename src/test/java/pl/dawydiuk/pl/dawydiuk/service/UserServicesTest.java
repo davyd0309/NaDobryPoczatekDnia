@@ -51,14 +51,14 @@ public class UserServicesTest extends AbstractTest {
         User user = new User();
         user.setLogin("testLogin");
         user.setPassword("testPassword");
-        user.setEmial("testEmail");
+        user.setEmail("testEmail");
 
         userService.saveOrUpdateUser(user);
 
         Assert.assertNotNull("Failure - user should not be a NULL",user);
         Assert.assertEquals("Failure - user have different login","testLogin",user.getLogin());
         Assert.assertEquals("Failure - user should have different password ","testPassword",user.getPassword());
-        Assert.assertEquals("Failure - user should have different email ","testEmail",user.getEmial());
+        Assert.assertEquals("Failure - user should have different email ","testEmail",user.getEmail());
     }
 
     @Test
