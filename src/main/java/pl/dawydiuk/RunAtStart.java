@@ -1,6 +1,7 @@
 package pl.dawydiuk;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.dawydiuk.dao.JokeRespository;
 import pl.dawydiuk.dao.RoleRespository;
@@ -26,6 +27,7 @@ public class RunAtStart {
     private VoteRespository voteRespository;
     private RoleRespository roleRespository;
 
+
     @Autowired
     public RunAtStart(UserRespository userRespository, JokeRespository jokeRespository, VoteRespository voteRespository, RoleRespository roleRespository) {
         this.userRespository = userRespository;
@@ -37,57 +39,59 @@ public class RunAtStart {
 
     //@PostConstruct
     public void runAtStart() {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-//        User user = new User();
-//        user.setLogin("davyd");
-//        user.setEmail("davyd@wp.pl");
-//        user.setPlec(EPlec.MEZCZYZNA);
-//        user.setPassword("davyd");
-//        userRespository.save(user);
-//
-//        User user1 = new User();
-//        user1.setLogin("robin");
-//        user1.setEmail("robin@wp.pl");
-//        user1.setPlec(EPlec.MEZCZYZNA);
-//        user1.setPassword("robin");
-//        userRespository.save(user1);
+        User user = new User();
+        user.setLogin("davyd");
+        user.setEmail("davyd@wp.pl");
+        user.setPlec(EPlec.MEZCZYZNA);
+        String davyd1 = passwordEncoder.encode("davyd");
+        user.setPassword(davyd1);
+        userRespository.save(user);
 
-//        User user2 = new User();
-//        user2.setLogin("maki");
-//        user2.setEmial("maki@wp.pl");
-//        user2.setPlec(EPlec.MEZCZYZNA);
-//        user2.setPassword("maki");
+        User user1 = new User();
+        user1.setLogin("robin");
+        user1.setEmail("robin@wp.pl");
+        user1.setPlec(EPlec.MEZCZYZNA);
+        String robin1 = passwordEncoder.encode("robin");
+        user1.setPassword(robin1);
+        userRespository.save(user1);
+
+        User user2 = new User();
+        user2.setLogin("maki");
+        user2.setEmail("maki@wp.pl");
+        user2.setPlec(EPlec.MEZCZYZNA);
+        String maki = passwordEncoder.encode("maki");
+        user2.setPassword(maki);
 
 
-//        Role roleUser = new Role();
-//        roleUser.setId(1);
-//        roleUser.setCode("ROLE_USER");
-//        roleUser.setLabel("User");
-//
-//        Role roleAdmin = new Role();
-//        roleAdmin.setId(2);
-//        roleAdmin.setCode("ROLE_ADMIN");
-//        roleAdmin.setLabel("Admin");
-//
-//        roleRespository.save(roleUser);
-//        roleRespository.save(roleAdmin);
+        Role roleUser = new Role();
+        roleUser.setId(1);
+        roleUser.setCode("ROLE_USER");
+        roleUser.setLabel("User");
 
-//        Role one = roleRespository.findOne(1);
-//        Role two = roleRespository.findOne(2);
-//
-//        User davyd = userRespository.findUserByLogin("davyd");
-//        User robin = userRespository.findUserByLogin("robin");
-//
-//        davyd.getRoles().add(one);
-//        davyd.getRoles().add(two);
-//
-//        robin.getRoles().add(one);
-//
-//        userRespository.save(davyd);
-//        userRespository.save(robin);
-//        User one = userRespository.findOne(3);
-//        one.getRoles().add(roleRespository.findOne(1));
-//        userRespository.save(one);
+        Role roleAdmin = new Role();
+        roleAdmin.setId(2);
+        roleAdmin.setCode("ROLE_ADMIN");
+        roleAdmin.setLabel("Admin");
+
+        roleRespository.save(roleUser);
+        roleRespository.save(roleAdmin);
+
+        Role one = roleRespository.findOne(1);
+        Role two = roleRespository.findOne(2);
+
+        User davyd = userRespository.findUserByLogin("davyd");
+        User robin = userRespository.findUserByLogin("robin");
+
+        davyd.getRoles().add(one);
+        davyd.getRoles().add(two);
+
+        robin.getRoles().add(one);
+
+        userRespository.save(davyd);
+        userRespository.save(robin);
+
 
     }
 
