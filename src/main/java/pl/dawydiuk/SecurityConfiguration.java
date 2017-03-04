@@ -40,10 +40,9 @@ public class SecurityConfiguration {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/login")
                     .authorizeRequests()
-                    .anyRequest().hasRole("USER")
-                    .anyRequest().hasRole("ADMIN")
+                    .antMatchers("/users/**","/zaloguj").hasAnyRole("USER", "ADMIN")
+
                     .and()
                     .httpBasic()
                     .and()
