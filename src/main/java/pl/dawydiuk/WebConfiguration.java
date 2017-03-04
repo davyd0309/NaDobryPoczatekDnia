@@ -23,6 +23,9 @@ public class WebConfiguration {
                 registry.addViewController("/").setViewName(
                         "forward:angular/view/index.html");
 
+                registry.addViewController("/login").setViewName(
+                        "forward:angular/view/mainPage.html");
+
             }
         };
     }

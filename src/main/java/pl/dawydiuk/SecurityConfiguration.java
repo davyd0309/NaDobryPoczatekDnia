@@ -40,9 +40,10 @@ public class SecurityConfiguration {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/users/**")
+                    .antMatcher("/login")
                     .authorizeRequests()
                     .anyRequest().hasRole("USER")
+                    .anyRequest().hasRole("ADMIN")
                     .and()
                     .httpBasic()
                     .and()
@@ -59,7 +60,7 @@ public class SecurityConfiguration {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/votes/**")
+                    .antMatcher("/admin/**")
                     .authorizeRequests()
                     .anyRequest().hasRole("ADMIN")
                     .and()
